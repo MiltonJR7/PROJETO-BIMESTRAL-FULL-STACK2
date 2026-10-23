@@ -1,0 +1,61 @@
+
+
+# =====================================
+# DEPENDENCIAS
+# =====================================
+node_modules/
+
+# =====================================
+# VARIAVEIS DE AMBIENTE E SEGREDOS
+# =====================================
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# =====================================
+# LOGS
+# =====================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================================
+# ARQUIVOS TEMPORARIOS
+# =====================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# =====================================
+# BANCO DE DADOS LOCAL
+# =====================================
+*.sqlite
+*.sqlite3
+*.db
+
+# =====================================
+# ARQUIVOS GERADOS
+# =====================================
+coverage/
+dist/
+build/
+.swagger-output.json
+swagger-output.json
+
+# =====================================
+# EDITORES E SISTEMA
+# =====================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
