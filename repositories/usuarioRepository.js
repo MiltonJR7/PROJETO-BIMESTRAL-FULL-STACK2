@@ -26,10 +26,8 @@ export default class UsuarioRepository {
         let values = [email, senha];
         let rows = await this.#banco.ExecutaComando(sql, values);
 
-
-
         if(rows.length > 0) {
-            return UsuarioEntity.toMap(rows[0]);
+            return UsuarioEntity.toPublicMap(rows[0]);
         };
         return false; 
     }
@@ -44,5 +42,4 @@ export default class UsuarioRepository {
         }
         return null;
     }
-
 }

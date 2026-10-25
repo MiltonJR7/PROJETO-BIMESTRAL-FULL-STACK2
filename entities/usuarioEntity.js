@@ -25,4 +25,8 @@ export default class UsuarioEntity extends Entity {
     static toMap(row) {
         return new UsuarioEntity(row["usu_id"], row["usu_nome"], row["usu_email"], row["usu_senha"]);
     }
+
+    static toPublicMap(row) {
+        return new UsuarioEntity(row["usu_id"], row["usu_nome"], row["usu_email"]);
+    }
 }

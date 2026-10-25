@@ -1,5 +1,6 @@
 
 import UsuarioEntity from "../entities/usuarioEntity.js";
+import AuthMiddleware from "../middlewares/authMiddleware.js";
 import UsuarioRepository from "../repositories/usuarioRepository.js";
 
 
@@ -32,10 +33,14 @@ export default class UsuarioController {
             if(!email || !senha) return res.status(400).json({ msg: "Todos os parametros são necessarios!" });
 
             let usuario = await this.#repo.login(email, senha);
-            if(usuario.usu_id !== 0) {
-                return res.status(200).json(usuario);
+            if(usuario) {
+
+                let middleware = new AuthMiddleware();
+                let token = middleware.gerarJWT(usuario.id, usuario.nome, usuario.email);
+                res.cookie("token-projeto", token, {httpOnly: true});
+                return res.status(200).json({ token: token });
             } else {
-                return res.status(400).json({ msg: "Usuario falha!" });
+                return res.status(404).json({ msg: "Usuario não encontrado." });
             }
         } catch(err) {
             console.log(err);

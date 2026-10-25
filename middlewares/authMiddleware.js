@@ -14,7 +14,7 @@ export default class AuthMiddleware {
     }
 
     async validar(req, res, next) {
-        let token = req.cookies('token-projeto');
+        let token = req.cookies['token-projeto'];
 
         if(token) {
             let payload = jwt.verify(token, SEGREDO);
